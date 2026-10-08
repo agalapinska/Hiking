@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { base } from '$app/paths';
 	import Map from './Map.svelte';
 	import Profile from './Profile.svelte';
 	import RuleCard from './RuleCard.svelte';
@@ -221,12 +222,12 @@
 	function copyToMine() {
 		id = uid();
 		save();
-		goto(`/?id=${id}`);
+		goto(`${base}/?id=${id}`);
 	}
 
 	async function share() {
 		const hash = encodeShare(name || 'Trasa', $state.snapshot(waypoints), followTrails ? $state.snapshot(line) : undefined);
-		const url = `${location.origin}/s/#${hash}`;
+		const url = `${location.origin}${base}/s/#${hash}`;
 		if (navigator.share) {
 			try { await navigator.share({ title: name || $t('app'), url }); return; } catch { /* cancelled */ }
 		}

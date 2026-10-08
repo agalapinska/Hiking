@@ -2,6 +2,7 @@
 	import '../app.css';
 	import 'maplibre-gl/dist/maplibre-gl.css';
 	import { page } from '$app/state';
+	import { base } from '$app/paths';
 	import { t } from '$lib/i18n';
 	import { settings } from '$lib/stores/db';
 	import { onMount } from 'svelte';
@@ -45,7 +46,7 @@
 
 <nav>
 	{#each tabs as tab}
-		<a href={tab.href} class:active={page.url.pathname === tab.href} aria-label={$t(tab.key)}>
+		<a href="{base}{tab.href}" class:active={page.url.pathname === base + tab.href} aria-label={$t(tab.key)}>
 			<span class="ic">{tab.icon}</span>
 			<span>{$t(tab.key)}</span>
 		</a>

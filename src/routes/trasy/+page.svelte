@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { t } from '$lib/i18n';
+	import { base } from '$app/paths';
 	import { routes } from '$lib/stores/db';
 	import { fmtDist, fmtTime, stats } from '$lib/geo/geo';
 	import { estimateMinutes, fitPace } from '$lib/geo/pace';
@@ -28,7 +29,7 @@
 				{#each r.countries as c}<span class="chip">{c}</span>{/each}
 			</div>
 			<div class="row" style="margin-top:10px">
-				<a href="/?id={r.id}"><button class="primary">{$t('open')}</button></a>
+				<a href="{base}/?id={r.id}"><button class="primary">{$t('open')}</button></a>
 				<button onclick={() => remove(r.id)}>{$t('delete')}</button>
 			</div>
 		</div>
